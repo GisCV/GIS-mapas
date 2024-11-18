@@ -1,65 +1,97 @@
-ol.proj.proj4.register(proj4);
-//ol.proj.get("EPSG:32721").setExtent([410339.629332, 6432174.859430, 416451.998029, 6436209.410242]);
 var wms_layers = [];
 
 
-        var lyr_GoogleHybrid_0 = new ol.layer.Tile({
-            'title': 'Google Hybrid',
+        var lyr_googlesatelite_0 = new ol.layer.Tile({
+            'title': 'google satelite',
             'opacity': 1.000000,
             
             
             source: new ol.source.XYZ({
             attributions: ' ',
-                url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'
+                url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
             })
         });
-var lyr_ndvi131124pot_1 = new ol.layer.Image({
+var lyr_ndvi1011_1 = new ol.layer.Image({
                             opacity: 1,
-                            title: "ndvi 13.11.24 pot",
+                            title: "ndvi 10.11",
                             
                             
                             source: new ol.source.ImageStatic({
-                               url: "./layers/ndvi131124pot_1.png",
+                               url: "./layers/ndvi1011_1.png",
     attributions: ' ',
-                                projection: 'EPSG:32721',
+                                projection: 'EPSG:3857',
                                 alwaysInRange: true,
-                                imageExtent: [410787.682700, 6432345.002700, 414372.066100, 6435674.934900]
+                                imageExtent: [-6399053.429925, -3879185.809308, -6389439.125122, -3866683.585850]
                             })
                         });
-var lyr_tc131124_2 = new ol.layer.Image({
+var lyr_NDVI511_2 = new ol.layer.Image({
                             opacity: 1,
-                            title: "tc 13.11.24",
+                            title: "NDVI 5.11",
                             
                             
                             source: new ol.source.ImageStatic({
-                               url: "./layers/tc131124_2.png",
+                               url: "./layers/NDVI511_2.png",
     attributions: ' ',
-                                projection: 'EPSG:32721',
+                                projection: 'EPSG:3857',
                                 alwaysInRange: true,
-                                imageExtent: [410787.682700, 6432345.002700, 414372.066100, 6435674.934900]
+                                imageExtent: [-6399052.873329, -3879145.536477, -6389486.076290, -3866722.834994]
                             })
                         });
-var format_LasAvenidascheck_3 = new ol.format.GeoJSON();
-var features_LasAvenidascheck_3 = format_LasAvenidascheck_3.readFeatures(json_LasAvenidascheck_3, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:32721'});
-var jsonSource_LasAvenidascheck_3 = new ol.source.Vector({
+var lyr_ndvi1311_3 = new ol.layer.Image({
+                            opacity: 1,
+                            title: "ndvi 13.11",
+                            
+                            
+                            source: new ol.source.ImageStatic({
+                               url: "./layers/ndvi1311_3.png",
+    attributions: ' ',
+                                projection: 'EPSG:3857',
+                                alwaysInRange: true,
+                                imageExtent: [-6399053.419156, -3879185.775389, -6389439.118324, -3866683.598846]
+                            })
+                        });
+var lyr_ndvi1511_4 = new ol.layer.Image({
+                            opacity: 1,
+                            title: "ndvi 15.11",
+                            
+                            
+                            source: new ol.source.ImageStatic({
+                               url: "./layers/ndvi1511_4.png",
+    attributions: ' ',
+                                projection: 'EPSG:3857',
+                                alwaysInRange: true,
+                                imageExtent: [-6399053.419156, -3879185.775389, -6389439.118324, -3866683.598846]
+                            })
+                        });
+var format_oliver_5 = new ol.format.GeoJSON();
+var features_oliver_5 = format_oliver_5.readFeatures(json_oliver_5, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+var jsonSource_oliver_5 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_LasAvenidascheck_3.addFeatures(features_LasAvenidascheck_3);
-var lyr_LasAvenidascheck_3 = new ol.layer.Vector({
+jsonSource_oliver_5.addFeatures(features_oliver_5);
+var lyr_oliver_5 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_LasAvenidascheck_3, 
-                style: style_LasAvenidascheck_3,
-                popuplayertitle: "Las Avenidas check",
+                source:jsonSource_oliver_5, 
+                style: style_oliver_5,
+                popuplayertitle: "oliver",
                 interactive: true,
-                title: '<img src="styles/legend/LasAvenidascheck_3.png" /> Las Avenidas check'
+                title: '<img src="styles/legend/oliver_5.png" /> oliver'
             });
+var group_Oliver = new ol.layer.Group({
+                                layers: [lyr_ndvi1011_1,lyr_NDVI511_2,lyr_ndvi1311_3,lyr_ndvi1511_4,lyr_oliver_5,],
+                                fold: "open",
+                                title: "Oliver"});
+var group_group1 = new ol.layer.Group({
+                                layers: [lyr_googlesatelite_0,],
+                                fold: "open",
+                                title: "group1"});
 
-lyr_GoogleHybrid_0.setVisible(true);lyr_ndvi131124pot_1.setVisible(true);lyr_tc131124_2.setVisible(true);lyr_LasAvenidascheck_3.setVisible(true);
-var layersList = [lyr_GoogleHybrid_0,lyr_ndvi131124pot_1,lyr_tc131124_2,lyr_LasAvenidascheck_3];
-lyr_LasAvenidascheck_3.set('fieldAliases', {'Name': 'Name', 'Especie': 'Especie', 'has': 'has', 'PPN 13.11.24_PPN 13.11.24': 'PPN 13.11.24_PPN 13.11.24', });
-lyr_LasAvenidascheck_3.set('fieldImages', {'Name': 'TextEdit', 'Especie': 'TextEdit', 'has': 'TextEdit', 'PPN 13.11.24_PPN 13.11.24': 'TextEdit', });
-lyr_LasAvenidascheck_3.set('fieldLabels', {'Name': 'header label - always visible', 'Especie': 'header label - always visible', 'has': 'no label', 'PPN 13.11.24_PPN 13.11.24': 'header label - always visible', });
-lyr_LasAvenidascheck_3.on('precompose', function(evt) {
+lyr_googlesatelite_0.setVisible(true);lyr_ndvi1011_1.setVisible(true);lyr_NDVI511_2.setVisible(true);lyr_ndvi1311_3.setVisible(true);lyr_ndvi1511_4.setVisible(true);lyr_oliver_5.setVisible(true);
+var layersList = [group_group1,group_Oliver];
+lyr_oliver_5.set('fieldAliases', {'Especie': 'Especie', 'id': 'id', 'Potrero': 'Potrero', 'Campo': 'Campo', 'Area': 'Area', '5.11.24_TC': '5.11.24_TC', '10.11.24_TC': '10.11.24_TC', '13.11.24_TC': '13.11.24_TC', '15.11.24_TC': '15.11.24_TC', });
+lyr_oliver_5.set('fieldImages', {'Especie': 'TextEdit', 'id': 'TextEdit', 'Potrero': 'TextEdit', 'Campo': 'TextEdit', 'Area': '', '5.11.24_TC': 'TextEdit', '10.11.24_TC': 'TextEdit', '13.11.24_TC': 'TextEdit', '15.11.24_TC': 'TextEdit', });
+lyr_oliver_5.set('fieldLabels', {'Especie': 'header label - always visible', 'id': 'hidden field', 'Potrero': 'header label - always visible', 'Campo': 'inline label - visible with data', 'Area': 'header label - always visible', '5.11.24_TC': 'header label - always visible', '10.11.24_TC': 'header label - always visible', '13.11.24_TC': 'header label - always visible', '15.11.24_TC': 'header label - always visible', });
+lyr_oliver_5.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });
