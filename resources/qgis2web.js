@@ -9,7 +9,7 @@ var map = new ol.Map({
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([-6413104.819891, -3885593.748690, -6340118.825841, -3858071.564433], map.getSize());
+map.getView().fit([-6399233.077255, -3877691.771084, -6390103.030607, -3874236.335911], map.getSize());
 
 ////small screen definition
     var hasTouchScreen = map.getViewport().classList.contains('ol-touch');
@@ -832,8 +832,8 @@ if (elementToMove && parentElement) {
 //layer search
 
 var searchLayer = new SearchLayer({
-    layer: lyr_oliver_5,
-    colName: 'Potrero',
+    layer: lyr_MartinWiebe_2,
+    colName: 'Pot',
     zoom: 10,
     collapsed: true,
     map: map
