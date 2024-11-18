@@ -1,50 +1,63 @@
 var wms_layers = [];
 
 
-        var lyr_Googlesatelite_0 = new ol.layer.Tile({
-            'title': 'Google satelite',
+        var lyr_GoogleHybrid_0 = new ol.layer.Tile({
+            'title': 'Google Hybrid',
             'opacity': 1.000000,
             
             
             source: new ol.source.XYZ({
             attributions: ' ',
-                url: 'http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}'
+                url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'
             })
         });
-var lyr_ndvi151124potreros_1 = new ol.layer.Image({
+var lyr_ndvi281024_1 = new ol.layer.Image({
                             opacity: 1,
-                            title: "ndvi 15.11.24 potreros",
+                            title: "ndvi 28.10.24",
                             
                             
                             source: new ol.source.ImageStatic({
-                               url: "./layers/ndvi151124potreros_1.png",
+                               url: "./layers/ndvi281024_1.png",
     attributions: ' ',
                                 projection: 'EPSG:3857',
                                 alwaysInRange: true,
-                                imageExtent: [-6419462.220277, -3963752.751085, -6408238.732155, -3947115.193257]
+                                imageExtent: [-6031019.077917, -3967210.496013, -6024371.967255, -3962839.768763]
                             })
                         });
-var format_CNypraderasoct24_2 = new ol.format.GeoJSON();
-var features_CNypraderasoct24_2 = format_CNypraderasoct24_2.readFeatures(json_CNypraderasoct24_2, 
+var format_Evaluacin_2024_2 = new ol.format.GeoJSON();
+var features_Evaluacin_2024_2 = format_Evaluacin_2024_2.readFeatures(json_Evaluacin_2024_2, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_CNypraderasoct24_2 = new ol.source.Vector({
+var jsonSource_Evaluacin_2024_2 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_CNypraderasoct24_2.addFeatures(features_CNypraderasoct24_2);
-var lyr_CNypraderasoct24_2 = new ol.layer.Vector({
+jsonSource_Evaluacin_2024_2.addFeatures(features_Evaluacin_2024_2);
+var lyr_Evaluacin_2024_2 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_CNypraderasoct24_2, 
-                style: style_CNypraderasoct24_2,
-                popuplayertitle: "CN y praderas oct 24",
+                source:jsonSource_Evaluacin_2024_2, 
+                style: style_Evaluacin_2024_2,
+                popuplayertitle: "Evaluación_2024",
                 interactive: true,
-                title: '<img src="styles/legend/CNypraderasoct24_2.png" /> CN y praderas oct 24'
-            });
+    title: 'Evaluación_2024<br />\
+    <img src="styles/legend/Evaluacin_2024_2_0.png" /> MODULO 1<br />\
+    <img src="styles/legend/Evaluacin_2024_2_1.png" /> MODULO 2<br />\
+    <img src="styles/legend/Evaluacin_2024_2_2.png" /> MODULO 3<br />\
+    <img src="styles/legend/Evaluacin_2024_2_3.png" /> MODULO 4<br />\
+    <img src="styles/legend/Evaluacin_2024_2_4.png" /> MODULO 5<br />\
+    <img src="styles/legend/Evaluacin_2024_2_5.png" /> MODULO 6<br />\
+    <img src="styles/legend/Evaluacin_2024_2_6.png" /> MODULO 7<br />\
+    <img src="styles/legend/Evaluacin_2024_2_7.png" /> MODULO 8<br />\
+    <img src="styles/legend/Evaluacin_2024_2_8.png" /> <br />'
+        });
+var group_Octubre = new ol.layer.Group({
+                                layers: [],
+                                fold: "open",
+                                title: "Octubre"});
 
-lyr_Googlesatelite_0.setVisible(true);lyr_ndvi151124potreros_1.setVisible(true);lyr_CNypraderasoct24_2.setVisible(true);
-var layersList = [lyr_Googlesatelite_0,lyr_ndvi151124potreros_1,lyr_CNypraderasoct24_2];
-lyr_CNypraderasoct24_2.set('fieldAliases', {'id': 'id', 'Campo': 'Campo', 'Especie': 'Recurso', 'Area': 'Area', 'Esp_2024': 'Recurso', 'layer': 'layer', 'path': 'path', 'pot imp_Po': 'Potrero', '15.11.24_TC': '15.11.24_TC', });
-lyr_CNypraderasoct24_2.set('fieldImages', {'id': 'TextEdit', 'Campo': 'TextEdit', 'Especie': 'TextEdit', 'Area': 'TextEdit', 'Esp_2024': 'TextEdit', 'layer': 'TextEdit', 'path': 'TextEdit', 'pot imp_Po': 'TextEdit', '15.11.24_TC': 'TextEdit', });
-lyr_CNypraderasoct24_2.set('fieldLabels', {'id': 'hidden field', 'Campo': 'header label - always visible', 'Especie': 'inline label - visible with data', 'Area': 'inline label - always visible', 'Esp_2024': 'inline label - always visible', 'layer': 'hidden field', 'path': 'hidden field', 'pot imp_Po': 'header label - always visible', '15.11.24_TC': 'header label - always visible', });
-lyr_CNypraderasoct24_2.on('precompose', function(evt) {
+lyr_GoogleHybrid_0.setVisible(true);lyr_ndvi281024_1.setVisible(true);lyr_Evaluacin_2024_2.setVisible(true);
+var layersList = [lyr_GoogleHybrid_0,lyr_ndvi281024_1,lyr_Evaluacin_2024_2];
+lyr_Evaluacin_2024_2.set('fieldAliases', {'Recurso': 'Recurso', 'MODULO': 'MODULO', 'Siembra': 'Siembra', 'Potrero': 'Potrero', '28.10.24_TC': '28.10.24_TC', });
+lyr_Evaluacin_2024_2.set('fieldImages', {'Recurso': 'TextEdit', 'MODULO': 'TextEdit', 'Siembra': 'TextEdit', 'Potrero': 'TextEdit', '28.10.24_TC': 'TextEdit', });
+lyr_Evaluacin_2024_2.set('fieldLabels', {'Recurso': 'header label - always visible', 'MODULO': 'header label - always visible', 'Siembra': 'header label - always visible', 'Potrero': 'header label - always visible', '28.10.24_TC': 'header label - always visible', });
+lyr_Evaluacin_2024_2.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });

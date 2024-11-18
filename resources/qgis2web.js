@@ -4,12 +4,12 @@ var map = new ol.Map({
     renderer: 'canvas',
     layers: layersList,
     view: new ol.View({
-        extent: [-6437477.538588, -3964028.436674, -6390909.401513, -3946334.736291], maxZoom: 26, minZoom: 1
+         maxZoom: 28, minZoom: 1
     })
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([-6437477.538588, -3964028.436674, -6390909.401513, -3946334.736291], map.getSize());
+map.getView().fit([-6032863.076886, -3968500.836329, -6018124.473807, -3961905.211502], map.getSize());
 
 ////small screen definition
     var hasTouchScreen = map.getViewport().classList.contains('ol-touch');
@@ -436,11 +436,11 @@ var bottomRightContainerDiv = document.getElementById('bottom-right-container')
 var Title = new ol.control.Control({
     element: (() => {
         var titleElement = document.createElement('div');
-        titleElement.className = 'top-left-title ol-control';
-        titleElement.innerHTML = '<h2 class="project-title">Santa María Baquelo</h2>';
+        titleElement.className = 'top-right-title ol-control';
+        titleElement.innerHTML = '<h2 class="project-title">Bachino</h2>';
         return titleElement;
     })(),
-    target: 'top-left-container'
+    target: 'top-right-container'
 });
 map.addControl(Title)
     
@@ -839,22 +839,12 @@ if (elementToMove && parentElement) {
 
 //geocoder
 
-var geocoder = new Geocoder('nominatim', {
-  provider: 'osm',
-  lang: 'en-US',
-  placeholder: 'Search place or address ...',
-  limit: 5,
-  keepOpen: true,
-});
-map.addControl(geocoder);
-document.getElementsByClassName('gcd-gl-btn')[0].className += ' fa fa-search';
-
 
 //layer search
 
 var searchLayer = new SearchLayer({
-    layer: lyr_CNypraderasoct24_2,
-    colName: 'pot imp_Po',
+    layer: lyr_Evaluacin_2024_2,
+    colName: 'Potrero',
     zoom: 10,
     collapsed: true,
     map: map
