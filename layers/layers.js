@@ -1,58 +1,50 @@
 var wms_layers = [];
 
 
-        var lyr_googlesatelite_0 = new ol.layer.Tile({
-            'title': 'google satelite',
+        var lyr_Googlesatelite_0 = new ol.layer.Tile({
+            'title': 'Google satelite',
             'opacity': 1.000000,
             
             
             source: new ol.source.XYZ({
             attributions: ' ',
-                url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
+                url: 'http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}'
             })
         });
-var lyr_ndvi1511hs_1 = new ol.layer.Image({
+var lyr_ndvi151124potreros_1 = new ol.layer.Image({
                             opacity: 1,
-                            title: "ndvi 15.11 hs",
+                            title: "ndvi 15.11.24 potreros",
                             
                             
                             source: new ol.source.ImageStatic({
-                               url: "./layers/ndvi1511hs_1.png",
+                               url: "./layers/ndvi151124potreros_1.png",
     attributions: ' ',
                                 projection: 'EPSG:3857',
                                 alwaysInRange: true,
-                                imageExtent: [-6397869.552199, -3876959.440147, -6395346.751731, -3874981.930480]
+                                imageExtent: [-6419462.220277, -3963752.751085, -6408238.732155, -3947115.193257]
                             })
                         });
-var format_HenrySchrder_2 = new ol.format.GeoJSON();
-var features_HenrySchrder_2 = format_HenrySchrder_2.readFeatures(json_HenrySchrder_2, 
+var format_CNypraderasoct24_2 = new ol.format.GeoJSON();
+var features_CNypraderasoct24_2 = format_CNypraderasoct24_2.readFeatures(json_CNypraderasoct24_2, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_HenrySchrder_2 = new ol.source.Vector({
+var jsonSource_CNypraderasoct24_2 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_HenrySchrder_2.addFeatures(features_HenrySchrder_2);
-var lyr_HenrySchrder_2 = new ol.layer.Vector({
+jsonSource_CNypraderasoct24_2.addFeatures(features_CNypraderasoct24_2);
+var lyr_CNypraderasoct24_2 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_HenrySchrder_2, 
-                style: style_HenrySchrder_2,
-                popuplayertitle: "Henry Schröder",
+                source:jsonSource_CNypraderasoct24_2, 
+                style: style_CNypraderasoct24_2,
+                popuplayertitle: "CN y praderas oct 24",
                 interactive: true,
-                title: '<img src="styles/legend/HenrySchrder_2.png" /> Henry Schröder'
+                title: '<img src="styles/legend/CNypraderasoct24_2.png" /> CN y praderas oct 24'
             });
-var group_HS = new ol.layer.Group({
-                                layers: [lyr_ndvi1511hs_1,lyr_HenrySchrder_2,],
-                                fold: "open",
-                                title: "H.S"});
-var group_group1 = new ol.layer.Group({
-                                layers: [lyr_googlesatelite_0,],
-                                fold: "open",
-                                title: "group1"});
 
-lyr_googlesatelite_0.setVisible(true);lyr_ndvi1511hs_1.setVisible(true);lyr_HenrySchrder_2.setVisible(true);
-var layersList = [group_group1,group_HS];
-lyr_HenrySchrder_2.set('fieldAliases', {'id': 'id', 'Potrero': 'Potrero', 'Especie': 'Especie', 'Area': 'Area', 'TC 15.11.24TC': 'TC 15.11.24TC', });
-lyr_HenrySchrder_2.set('fieldImages', {'id': 'TextEdit', 'Potrero': 'TextEdit', 'Especie': 'TextEdit', 'Area': 'TextEdit', 'TC 15.11.24TC': 'TextEdit', });
-lyr_HenrySchrder_2.set('fieldLabels', {'id': 'hidden field', 'Potrero': 'header label - always visible', 'Especie': 'header label - always visible', 'Area': 'header label - always visible', 'TC 15.11.24TC': 'header label - always visible', });
-lyr_HenrySchrder_2.on('precompose', function(evt) {
+lyr_Googlesatelite_0.setVisible(true);lyr_ndvi151124potreros_1.setVisible(true);lyr_CNypraderasoct24_2.setVisible(true);
+var layersList = [lyr_Googlesatelite_0,lyr_ndvi151124potreros_1,lyr_CNypraderasoct24_2];
+lyr_CNypraderasoct24_2.set('fieldAliases', {'id': 'id', 'Campo': 'Campo', 'Especie': 'Recurso', 'Area': 'Area', 'Esp_2024': 'Recurso', 'layer': 'layer', 'path': 'path', 'pot imp_Po': 'Potrero', '15.11.24_TC': '15.11.24_TC', });
+lyr_CNypraderasoct24_2.set('fieldImages', {'id': 'TextEdit', 'Campo': 'TextEdit', 'Especie': 'TextEdit', 'Area': 'TextEdit', 'Esp_2024': 'TextEdit', 'layer': 'TextEdit', 'path': 'TextEdit', 'pot imp_Po': 'TextEdit', '15.11.24_TC': 'TextEdit', });
+lyr_CNypraderasoct24_2.set('fieldLabels', {'id': 'hidden field', 'Campo': 'header label - always visible', 'Especie': 'inline label - visible with data', 'Area': 'inline label - always visible', 'Esp_2024': 'inline label - always visible', 'layer': 'hidden field', 'path': 'hidden field', 'pot imp_Po': 'header label - always visible', '15.11.24_TC': 'header label - always visible', });
+lyr_CNypraderasoct24_2.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });

@@ -4,12 +4,12 @@ var map = new ol.Map({
     renderer: 'canvas',
     layers: layersList,
     view: new ol.View({
-         maxZoom: 28, minZoom: 1
+        extent: [-6437477.538588, -3964028.436674, -6390909.401513, -3946334.736291], maxZoom: 26, minZoom: 1
     })
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([-6399233.077255, -3877691.771084, -6390103.030607, -3874236.335911], map.getSize());
+map.getView().fit([-6437477.538588, -3964028.436674, -6390909.401513, -3946334.736291], map.getSize());
 
 ////small screen definition
     var hasTouchScreen = map.getViewport().classList.contains('ol-touch');
@@ -113,7 +113,7 @@ var featureOverlay = new ol.layer.Vector({
 });
 
 var doHighlight = true;
-var doHover = true;
+var doHover = false;
 
 function createPopupField(currentFeature, currentFeatureKeys, layer) {
     var popupText = '';
@@ -433,6 +433,17 @@ var bottomRightContainerDiv = document.getElementById('bottom-right-container')
 
 //title
 
+var Title = new ol.control.Control({
+    element: (() => {
+        var titleElement = document.createElement('div');
+        titleElement.className = 'top-left-title ol-control';
+        titleElement.innerHTML = '<h2 class="project-title">Santa María Baquelo</h2>';
+        return titleElement;
+    })(),
+    target: 'top-left-container'
+});
+map.addControl(Title)
+    
 //abstract
 
 
@@ -828,12 +839,22 @@ if (elementToMove && parentElement) {
 
 //geocoder
 
+var geocoder = new Geocoder('nominatim', {
+  provider: 'osm',
+  lang: 'en-US',
+  placeholder: 'Search place or address ...',
+  limit: 5,
+  keepOpen: true,
+});
+map.addControl(geocoder);
+document.getElementsByClassName('gcd-gl-btn')[0].className += ' fa fa-search';
+
 
 //layer search
 
 var searchLayer = new SearchLayer({
-    layer: lyr_HenrySchrder_2,
-    colName: 'Potrero',
+    layer: lyr_CNypraderasoct24_2,
+    colName: 'pot imp_Po',
     zoom: 10,
     collapsed: true,
     map: map
